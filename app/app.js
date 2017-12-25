@@ -1,9 +1,16 @@
 'use strict';
 
-angular.module('flightControlApp', [
+/*
+ * Flight Control Web Application.
+ */
+var flightControlApp = angular.module('flightControlApp', [
   'ngRoute',
   'flightControlApp.flights'
-]).
-config(['$routeProvider', function($routeProvider) {
+]);
+
+/*
+ * Routing configuration.
+ */
+flightControlApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/flights'});
 }]);

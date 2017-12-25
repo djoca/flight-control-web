@@ -1,9 +1,9 @@
 <div class="panel panel-default" ng-controller="flightsController">
   <div class="panel-heading">
-    <h3 class="panel-title">Current flights</h3>
+    <h1 class="panel-title">Current flights</h1>
   </div>
   <div class="panel-body">
-    <table class="table">
+    <table class="table table-hover table-striped">
       <thead>
         <th>Flight #</th>
         <th>Company</th>
@@ -13,8 +13,8 @@
         <th>Arrival</th>
         <th>Status</th>
       </thead>
-      <tbody ng-repeat="flight in flights">
-        <tr>
+      <tbody>
+        <tr data-toggle="modal" data-target="#flightDetailModal" ng-repeat="flight in flights" ng-click="loadFlight(flight.id)">
           <td>{{flight.flightNumber}}</td>
           <td>{{flight.companyName}}</td>
           <td>{{flight.origin}}</td>
@@ -25,5 +25,73 @@
         </tr>
       </tbody>
       </table>
+  </div>
+
+  <div class="modal show" role="dialog" ng-if="error">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{error}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="flightDetailModal" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modal-title">Flight {{flightDetails.companyName}} {{flightDetails.flightNumber}}</h4>
+       </div>
+       <div class="modal-body">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Aircraft</h3>
+            </div>
+            <div class="panel-body">
+              {{flightDetails.aircraft.manufacturer}} {{flightDetails.aircraft.model}}<br>
+              {{flightDetails.aircraft.registry}}<br>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Pilot</h3>
+            </div>
+            <div class="panel-body">
+              {{flightDetails.pilot.name}}<br>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Origin</h3>
+            </div>
+            <div class="panel-body">
+              {{flightDetails.origin.city.name}}<br>
+              {{flightDetails.origin.name}} - {{flightDetails.origin.iataCode}}<br>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Destination</h3>
+            </div>
+            <div class="panel-body">
+              {{flightDetails.destination.city.name}}<br>
+              {{flightDetails.destination.name}} - {{flightDetails.destination.iataCode}}<br>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Status</h3>
+            </div>
+            <div class="panel-body">
+              {{flightDetails.flightStatus}}<br>
+              Departure time: {{flightDetails.departureTime}}<br>
+              Arrival time: {{flightDetails.arrivalTime}}<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
