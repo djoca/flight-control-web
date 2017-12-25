@@ -9,6 +9,11 @@ angular.module('flightControlApp.flights', ['ngRoute'])
   });
 }])
 
-.controller('flightsController', [function() {
+.controller('flightsController', ['$http', '$scope', function($http, $scope) {
+
+  $http.get('http://localhost:8080/flights')
+    .then(function(response) {
+      $scope.flights = response.data;
+    });
 
 }]);
