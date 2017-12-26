@@ -1,8 +1,10 @@
 # Flight Control Web
 
-This is a web interface for the Flight Control API
+This is a web interface for the Flight Control API.
 
 ## Getting started
+
+This project requires the Flight Control API to be running. If you haven't already done so, [get it running](https://github.com/djoca/flight-control-api) before proceeding.
 
 1. Make sure you have Git and NPM installed.
 2. Clone this repository locally.
