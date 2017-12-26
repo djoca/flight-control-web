@@ -6,7 +6,7 @@
 var flightControlModule = angular.module('flightControlApp.flights', ['ngRoute']);
 
 /*
- * Flight control API URL
+ * Flight control API URL.
  */
 var apiUrl = 'http://localhost:8080';
 
@@ -26,10 +26,16 @@ flightControlModule.config(['$routeProvider', function($routeProvider) {
  */
 flightControlModule.controller('flightsController', ['$http', '$scope', function($http, $scope) {
 
+  /*
+   * Show the 'Server unreacheable' message.
+   */
   var showErrorMessage = function() {
     $scope.error = "Server unreacheable";
   }
 
+  /*
+   * Load a flight defined by the param flightId.
+   */
   $scope.loadFlight = function (flightId) {
     $http
       .get(apiUrl + '/flights/' + flightId)
@@ -40,12 +46,19 @@ flightControlModule.controller('flightsController', ['$http', '$scope', function
       });
   }
 
-  $http
-    .get(apiUrl + '/flights')
-    .then(function(response) {
-      $scope.flights = response.data;
-    }, function(error) {
-        showErrorMessage();
-    });
+  /*
+   * Load all flights.
+   */
+  var loadFlights = function() {
+    $http
+      .get(apiUrl + '/flights')
+      .then(function(response) {
+        $scope.flights = response.data;
+      }, function(error) {
+          showErrorMessage();
+      });
+  }
+
+  loadFlights();
 
 }]);
