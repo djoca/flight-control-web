@@ -11,3 +11,13 @@ This project requires the Flight Control API to be running. If you haven't alrea
 3. Execute `npm install` to install the dependencies.
 4. Execute `npm start` to start the server.
 5. Open you browser and point it to `http://localhost:8000/`
+
+## User Interface
+
+The main page lists all active flights registered in the system.
+
+![Flights](https://djoca.github.io/img/flight-control-web/flights.jpg)
+
+Flight details can be visualized by clicking on the desired flight row.
+
+![Flight details](https://djoca.github.io/img/flight-control-web/flight-details.jpg)
