@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/djoca/flight-control-web.svg?branch=post-26-12-2017-updates)](https://travis-ci.org/djoca/flight-control-web)
+
 # Flight Control Web
 
 This is a web interface for the Flight Control API.
