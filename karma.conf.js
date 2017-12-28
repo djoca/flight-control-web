@@ -16,13 +16,13 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     // libs must be loaded first.
     files: [
-      'build/lib/angular.min.js',
-      'build/lib/angular-route.min.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'build/lib/jquery.min.js',
-      'build/lib/bootstrap.min.js',
-      'build/**/*.js',
-      'test/**/*.js'
+        'build/lib/angular.min.js',
+        'build/lib/angular-route.min.js',
+        'node_modules/angular-mocks/angular-mocks.js',
+        'build/lib/jquery.min.js',
+        'build/lib/bootstrap.min.js',
+        'build/**/*.js',
+        'test/**/*.js'
     ],
 
 
@@ -34,13 +34,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'build/*.js': 'coverage',
+        'build/flights/*.js': 'coverage'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['coverage'],
+
+
+    // Coverage reporter configuration
+    coverageReporter: {
+        type : 'lcov',
+        dir : 'coverage/',
+        subdir : '.'
+    },
 
 
     // web server port
