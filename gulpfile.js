@@ -16,10 +16,10 @@ gulp.task('src', ['src-flights'], function() {
 
 gulp.task('lib', function(){
   return gulp.src([
-  'app/bower_components/angular/angular.min.js',
-  'app/bower_components/angular-route/angular-route.min.js',
-  'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
-  'app/bower_components/jquery/dist/jquery.min.js'
+  'node_modules/angular/angular.min.js',
+  'node_modules/angular-route/angular-route.min.js',
+  'node_modules/bootstrap/dist/js/bootstrap.min.js',
+  'node_modules/jquery/dist/jquery.min.js'
   ]).pipe(gulp.dest('build/lib'));
 });
 
