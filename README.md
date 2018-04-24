@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/djoca/flight-control-web.svg?branch=post-26-12-2017-updates)](https://travis-ci.org/djoca/flight-control-web)
+[![Coverage Status](https://coveralls.io/repos/github/djoca/flight-control-web/badge.svg?branch=post-26-12-2017-updates)](https://coveralls.io/github/djoca/flight-control-web?branch=post-26-12-2017-updates)
+
 # Flight Control Web
 
 This is a web interface for the Flight Control API.
