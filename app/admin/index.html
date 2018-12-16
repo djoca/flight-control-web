@@ -1,0 +1,85 @@
+<div class="panel panel-default" ng-controller="adminController">
+  <div class="panel-heading">
+    <h1 class="panel-title">Create new flight</h1>
+  </div>
+
+  <div class="panel-body">
+
+    <form>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="company">Flight number</label>
+          <input class="form-control" ng-model="form.number">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="company">Company</label>
+          <input class="form-control" ng-model="form.companyName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="aircraft">Aircraft</label>
+          <select class="form-control" ng-model="form.aircraft">
+            <option></option>
+            <option ng-repeat="aircraft in aircrafts" value="{{aircraft.id}}">{{aircraft.manufacturer}} {{aircraft.model}} - {{aircraft.registry}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="pilot">Pilot</label>
+          <select class="form-control" ng-model="form.pilot">
+            <option></option>
+            <option ng-repeat="pilot in pilots" value="{{pilot.id}}">{{pilot.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="origin">Origin</label>
+          <select class="form-control" ng-model="form.origin">
+            <option></option>
+            <option ng-repeat="airport in airports" value="{{airport.id}}">{{airport.cityName}} ({{airport.iataCode}})</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="destination">Destination</label>
+          <select class="form-control" ng-model="form.destination">
+            <option></option>
+            <option ng-repeat="airport in airports" value="{{airport.id}}">{{airport.cityName}} ({{airport.iataCode}})</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="departure">Departure time</label>
+          <input type="text" class="form-control" ng-model="form.departureTime">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="button" class="btn btn-primary" value="Create" ng-click="createFlight()">
+        </div>
+      </div>
+      
+    </form>
+  </div>
+
+  <div id="errorModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{error}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="messageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          {{message}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

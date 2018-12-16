@@ -10,7 +10,11 @@ gulp.task('src-flights', function() {
   return gulp.src('app/flights/*').pipe(gulp.dest('build/flights'));
 });
 
-gulp.task('src', ['src-flights'], function() {
+gulp.task('src-admin', function() {
+  return gulp.src('app/admin/*').pipe(gulp.dest('build/admin'));
+});
+
+gulp.task('src', ['src-flights', 'src-admin'], function() {
   return gulp.src(['app/*.js', 'app/*.html']).pipe(gulp.dest('build'));
 });
 

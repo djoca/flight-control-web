@@ -30,6 +30,7 @@ flightControlModule.controller('flightsController', ['$http', '$scope', function
    * Show the 'Server unreacheable' message.
    */
   var showErrorMessage = function() {
+    $('#errorModal').modal('show');
     $scope.error = "Server unreacheable";
   }
 

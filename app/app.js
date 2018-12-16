@@ -5,7 +5,8 @@
  */
 var flightControlApp = angular.module('flightControlApp', [
   'ngRoute',
-  'flightControlApp.flights'
+  'flightControlApp.flights',
+  'flightControlApp.admin'
 ]);
 
 /*
