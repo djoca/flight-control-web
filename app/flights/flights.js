@@ -60,6 +60,21 @@ flightControlModule.controller('flightsController', ['$http', '$scope', function
       });
   }
 
+  /*
+   * Call a flight action
+   */
+  $scope.flightAction = function(event, flightId, action) {
+    $http
+      .put(apiUrl + '/flights/' + flightId + '?action=' + action)
+      .then(function(response) {
+        loadFlights();
+      }, function(error) {
+        showErrorMessage();
+      });
+
+    event.stopPropagation();
+  }
+
   loadFlights();
 
 }]);

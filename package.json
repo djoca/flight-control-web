@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.1",
     "angular-mocks": "^1.6.8",
     "coveralls": "^3.0.0",
     "del": "^3.0.0",
