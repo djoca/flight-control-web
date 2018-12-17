@@ -5,12 +5,14 @@ describe("adminController", function() {
   var $controller;
   var $rootScope;
   var $httpBackend;
+  var $compile;
 
   beforeEach(inject(function($injector) {
     $controller = $injector.get('$controller');
     $rootScope = $injector.get('$rootScope');
     $httpBackend = $injector.get('$httpBackend');
-  
+    $compile = $injector.get('$compile');
+
     $httpBackend.when('GET','http://localhost:8080/aircrafts').respond(200,
         [{"id":1,"manufacturer":"Embraer","model":"190","registry":"PT-HYC"},{"id":2,"manufacturer":"Boeing","model":"737","registry":"PP-GOR"}]
     );
@@ -67,15 +69,19 @@ describe("adminController", function() {
   
   it('should create a new flight', function() {
     var adminController = $controller('adminController', { $scope: $rootScope });
-    
+
+    var element = angular.element('<form name="newFlightForm"></form>');
+    $compile(element)($rootScope);
+
+    expect($rootScope.newFlightForm).toBeDefined();
     expect($rootScope.form).toBeDefined();
 
     $rootScope.form.number = '200';
     $rootScope.form.companyName = 'Azul';
     $rootScope.form.aircraft = '1';
     $rootScope.form.pilot = '1';
-    $rootScope.form.origin = '1'
-    $rootScope.form.destination = '6'
+    $rootScope.form.origin = '1';
+    $rootScope.form.destination = '6';
     $rootScope.form.departureTime = '12/12/2018 13:00';
     
     $rootScope.createFlight();

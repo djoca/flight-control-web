@@ -48,6 +48,13 @@ adminModule.controller('adminController', ['$http', '$scope', function($http, $s
    * Create a flight
    */
   $scope.createFlight = function() {
+
+    // Do not post if the form is invalid
+    if ($scope.newFlightForm.$invalid) {
+      $scope.hasError = true;
+      return;
+    }
+
     var data = {
         flightNumber: $scope.form.number,
         companyName: $scope.form.companyName,
@@ -62,6 +69,9 @@ adminModule.controller('adminController', ['$http', '$scope', function($http, $s
       .post(apiUrl + '/flights', data)
       .then(function(response) {
         if (response.status == 201) {
+          $scope.hasError = false;
+          $scope.newFlightForm.$setUntouched();
+          $scope.newFlightForm.$setPristine();
           $scope.form = {};
           showMessage("Flight created");
         }
