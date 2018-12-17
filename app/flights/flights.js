@@ -52,12 +52,27 @@ flightControlModule.controller('flightsController', ['$http', '$scope', function
    */
   var loadFlights = function() {
     $http
-      .get(apiUrl + '/flights')
+      .get(apiUrl + '/flights' + ($scope.searchString ? '?search=' + $scope.searchString : ''))
       .then(function(response) {
         $scope.flights = response.data;
       }, function(error) {
-          showErrorMessage();
+        showErrorMessage();
       });
+  }
+
+  /*
+   * Search flights
+   */
+  $scope.flightSearch = function() {
+    loadFlights();
+  }
+
+  /*
+   * Clear searchString parameters and load flights again
+   */
+  $scope.clearSearch = function() {
+    $scope.searchString = null;
+    loadFlights();
   }
 
   /*
